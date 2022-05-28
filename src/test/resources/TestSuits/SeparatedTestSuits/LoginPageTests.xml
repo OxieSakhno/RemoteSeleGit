@@ -1,0 +1,60 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="LoginPageTestsSuit" verbose="1" parallel="tests" thread-count="1">
+
+
+    <test name="LandOnLoginPageTest" >
+        <parameter name="browser" value="chrome"/>
+        <parameter name="description" value="Verify that title of LoginPage matches to expected"/>
+        <parameter name="expectedTitle" value="The Internet"/>
+        <classes>
+            <class name="com.herokuapp.theinternet.pages.LoginPageTests">
+                <methods>
+                    <exclude name="positiveLoginPageTest" />
+                    <exclude name="logoutTest" />
+                    <exclude name="negativeLoginPageTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+    <test name="PositiveLoginTest" >
+        <parameter name="browser" value="chrome"/>
+        <parameter name="description" value="Verify Success LoginMessage is displayed"/>
+        <classes>
+            <class name="com.herokuapp.theinternet.pages.LoginPageTests">
+                <methods>
+                    <include name="positiveLoginPageTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+    <test name="PositiveLogOutTest" >
+        <parameter name="browser" value="chrome"/>
+        <parameter name="description" value="Verify Success LogOutMessage is displayed"/>
+        <classes>
+            <class name="com.herokuapp.theinternet.pages.LoginPageTests">
+                <methods>
+                    <include name="logoutTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+    <test name="NegativeLoginTest" >
+        <parameter name="browser" value="chrome"/>
+        <parameter name="description" value="Verify Warning LoginMessage is displayed"/>
+        <classes>
+            <class name="com.herokuapp.theinternet.pages.LoginPageTests">
+                <methods>
+                    <include name="negativeLoginPageTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
